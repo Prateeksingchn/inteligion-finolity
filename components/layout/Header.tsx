@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { ChevronDown } from 'lucide-react';
+// import Image from 'next/image';
+// import { ChevronDown } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -47,7 +47,7 @@ export function Header() {
   return (
     <header className="w-full bg-white relative z-50">
       <div className="border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-full px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex items-center">
@@ -86,7 +86,7 @@ export function Header() {
             </div>
 
             {/* Navigation - Updated styling */}
-            <NavigationMenu className="flex-1 flex justify-center">
+            <NavigationMenu className="flex-1 flex justify-center static">
               <NavigationMenuList className="flex items-center justify-center space-x-8 w-full">
                 <NavigationMenuItem>
                   <Link href="/" className="text-red-600 font-medium">
@@ -98,9 +98,9 @@ export function Header() {
                   <NavigationMenuTrigger className="text-gray-800 font-medium">
                     Services
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
+                  <NavigationMenuContent className="absolute left-0">
                     <div className="w-[100vw]">
-                      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                      <div className="px-4 sm:px-6 lg:px-8 py-8">
                         <div className="grid grid-cols-3 gap-16">
                           {/* Services Column */}
                           <div>
@@ -245,7 +245,7 @@ export function Header() {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="w-[100vw]">
-                      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                      <div className="px-4 sm:px-6 lg:px-8 py-8">
                         <div className="grid grid-cols-3 gap-16">
                           <div>
                             <h3 className="text-lg font-semibold mb-6 text-gray-900">Market Reports on</h3>
@@ -350,7 +350,7 @@ export function Header() {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="w-[100vw]">
-                      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                      <div className="px-4 sm:px-6 lg:px-8 py-8">
                         <div className="grid grid-cols-3 gap-16">
                           {/* Tagline Column */}
                           <div>
@@ -437,7 +437,7 @@ export function Header() {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="w-[100vw]">
-                      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                      <div className="px-4 sm:px-6 lg:px-8 py-8">
                         <div className="grid grid-cols-3 gap-8">
                           <div>
                             <h3 className="text-lg font-semibold mb-4 text-gray-900">Our Brands</h3>
