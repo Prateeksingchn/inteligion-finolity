@@ -3,6 +3,7 @@
 import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/layout/Hero';
 import { MetricsAndServices } from '@/components/layout/MetricsAndServices'
+import Solution from "@/components/layout/Solution";
 import { Features } from '@/components/layout/Features';
 import { CTA } from '@/components/layout/CTA';
 import { Footer } from '@/components/layout/Footer';
@@ -13,6 +14,7 @@ export default function Home() {
       <Header />
       <Hero />
       <MetricsAndServices />
+      <Solution />
       <Features />
       <CTA />
       <Footer />
