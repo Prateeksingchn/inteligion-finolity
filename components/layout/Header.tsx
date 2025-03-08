@@ -45,10 +45,10 @@ const brandsItems = [
 
 export function Header() {
   return (
-    <header className="w-full bg-white relative z-50">
+    <header className="w-full bg-white relative z-50 px-20">
       <div className="border-b border-gray-200">
         <div className="max-w-full px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-14">
             {/* Logo */}
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
@@ -490,8 +490,8 @@ export function Header() {
             {/* Client Support and Contact */}
             <div className="flex items-center space-x-4">
               <div className="text-right">
-                <div className="text-sm text-gray-600">Client Support →</div>
-                <div className="font-medium">0612-2500971</div>
+                <div className="text-xs text-gray-600 font-extrabold bg-gray-100 p-[4px]">Client Support →</div>
+                <div className="font-medium text-xs">0612-2500971</div>
               </div>
               <Button className="bg-black text-white hover:bg-gray-800">
                 Contact Us

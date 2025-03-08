@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -10,13 +10,13 @@ export function Hero() {
     <section className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-b from-white to-gray-50">
       {/* Grid Lines Background - Improved Visibility */}
       <div className="absolute inset-0 z-0">
-        {/* Dots Pattern - Made More Visible */}
+        {/* Dots Pattern */}
         <div className="absolute inset-0" style={{ 
           backgroundImage: 'radial-gradient(rgba(176, 190, 255, 0.4) 1.5px, transparent 1.5px)',
           backgroundSize: '24px 24px'
         }}></div>
         
-        {/* Grid Lines - Increased Opacity for Better Visibility */}
+        {/* Grid Lines */}
         <div className="absolute inset-0" style={{
           backgroundImage: `
             linear-gradient(to right, rgba(200, 210, 255, 0.25) 1px, transparent 1px),
@@ -38,7 +38,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="inline-flex items-center px-4 py-2 rounded-full border border-orange-200 bg-white shadow-sm">
+          <div className="inline-flex items-center px-4 py-2 rounded-full border border-orange-200 bg-white shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer">
             <span className="text-sm font-medium text-orange-600">INTELION IT SERVICES</span>
           </div>
         </motion.div>
@@ -51,11 +51,27 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            We manage your <span className="text-navy-900">IT</span>,
+            We manage your <span className="text-navy-900 relative">
+              IT
+              <motion.span 
+                className="absolute -bottom-2 left-0 w-full h-2 bg-blue-500/20" 
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              ></motion.span>
+            </span>,
             <br />
             so you can manage
             <br />
-            your <span className="text-orange-500">business</span>.
+            your <span className="text-orange-500 relative">
+              business
+              <motion.span 
+                className="absolute -bottom-2 left-0 w-full h-2 bg-orange-500/20" 
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              ></motion.span>
+            </span>.
           </motion.h1>
           
           <motion.p 
@@ -69,16 +85,21 @@ export function Hero() {
           </motion.p>
           
           <motion.div 
-            className="flex justify-center gap-4 pt-6"
+            className="flex flex-col sm:flex-row justify-center gap-4 pt-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <Button className="bg-red-600 hover:bg-red-700 text-white font-medium text-sm px-5 py-2 h-auto rounded-full shadow-md shadow-red-600/10 transition-all">
+            <Button 
+              className="bg-red-600 hover:bg-red-700 text-white font-medium text-sm px-10 py-5 h-auto rounded-full shadow-md hover:shadow-lg hover:shadow-red-600/20 transition-all duration-300 transform hover:-translate-y-1"
+            >
               Schedule a Free Consultation
             </Button>
             
-            <Button variant="outline" className="bg-white text-gray-800 hover:bg-gray-50 border-gray-200 font-medium text-sm px-5 py-2 h-auto rounded-full transition-all">
+            <Button 
+              variant="outline" 
+              className="bg-black text-gray-100 hover:bg-gray-800 border-gray-200 font-medium text-sm px-10 py-5 h-auto rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md"
+            >
               Services
             </Button>
           </motion.div>
@@ -95,8 +116,6 @@ export function Hero() {
             type: "spring",
             stiffness: 50
           }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: true }}
         >
           <div className="relative rounded-2xl overflow-hidden shadow-2xl">
             {/* Enhanced gradient overlay on image */}
@@ -172,36 +191,6 @@ export function Hero() {
               </div>
             </motion.div>
           </div>
-          
-          {/* Testimonial below image with improved animation */}
-          <motion.div 
-            className="bg-white rounded-xl shadow-lg p-6 max-w-2xl mx-auto -mt-10 relative z-30 border border-gray-100"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            whileHover={{ 
-              y: -3,
-              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-            }}
-          >
-            <div className="flex items-center">
-              <div className="flex -space-x-2 mr-4">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center border-2 border-white">
-                  <span className="text-indigo-600 text-xs font-bold">AC</span>
-                </div>
-                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center border-2 border-white">
-                  <span className="text-blue-600 text-xs font-bold">TS</span>
-                </div>
-                <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center border-2 border-white">
-                  <span className="text-orange-600 text-xs font-bold">JD</span>
-                </div>
-              </div>
-              <div>
-                <p className="text-sm text-gray-600">"Intelion transformed our IT infrastructure and saved us countless hours managing tech problems."</p>
-                <p className="text-xs font-medium text-gray-800 mt-1">Trusted by 500+ businesses worldwide</p>
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
