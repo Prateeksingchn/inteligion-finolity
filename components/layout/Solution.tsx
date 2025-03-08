@@ -1,7 +1,10 @@
 'use client';
 
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { ChevronRight } from 'lucide-react';
 
 interface SolutionItem {
   image: string;
@@ -49,30 +52,77 @@ const solutions: SolutionItem[] = [
 ];
 
 export default function Solution() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
     <div className="w-full bg-[#F5F5F5]">
-      <section className="py-12 px-6 max-w-7xl mx-auto ">
-        <h2 className="text-black text-xs font-bold mb-2">HOW WE DO</h2>
-        <h2 className="text-red-600 text-4xl font-bold mb-8">Solutions</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="py-16 px-6 max-w-7xl mx-auto">
+        <div className="space-y-2 mb-8 text-center md:text-left">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-black text-xs font-bold tracking-wider uppercase"
+          >
+            HOW WE DO
+          </motion.p>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-red-600 text-4xl font-bold"
+          >
+            Solutions
+          </motion.h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {solutions.map((solution, index) => (
-            <Card key={index} className="border border-gray-200 shadow-md p-6 hover:shadow-xl transition-all duration-300">
-              <div className="mb-4">
-                <img src={solution.image} alt={solution.title} className="w-20 h-20 mb-4" />
-              </div>
-              <h3 className="text-lg font-semibold">{solution.title}</h3>
-              <p className="text-gray-600 text-[12.5px] mt-2 mb-4">{solution.description}</p>
-              <div className="border-t-2 border-gray-200">
-                <a href="#" className="text-red-600 text-xs font-semibold mt-4 inline-block">
-                  Learn more
-                </a>
-              </div>
-            </Card>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <Card className={`h-full border-0 rounded-none bg-white overflow-hidden transition-all duration-300 ${
+                hoveredIndex === index ? 'shadow-2xl translate-y-[-8px]' : 'shadow-lg'
+              }`}>
+                <div className="p-8">
+                  <div className={`mb-6 transform transition-transform duration-300 ${
+                    hoveredIndex === index ? 'scale-100' : ''
+                  }`}>
+                    <img src={solution.image} alt={solution.title} className="w-16 h-16" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4">{solution.title}</h3>
+                  <p className="text-gray-600 text-xs leading-relaxed mb-6">{solution.description}</p>
+                  <div className="pt-5 mt-2 border-t-2 border-gray-200">
+                    <a 
+                      href="#" 
+                      className="group inline-flex items-center text-red-600 font-medium text-sm"
+                    >
+                      Learn more
+                      <ChevronRight size={16} className="ml-1 transition-transform duration-300 group-hover:translate-x-1" />
+                    </a>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
           ))}
         </div>
-        <div className="mt-10 flex justify-center">
-          <Button className="bg-black text-white px-6 py-2 rounded-md">View All Solutions</Button>
-        </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+          className="mt-14 flex justify-center"
+        >
+          <Button className="bg-black hover:bg-red-600 text-white px-8 py-6 rounded-lg text-sm font-medium transition-colors duration-300 flex items-center">
+            View All Solutions
+            <ChevronRight size={16} className="ml-1" />
+          </Button>
+        </motion.div>
       </section>
     </div>
   );
