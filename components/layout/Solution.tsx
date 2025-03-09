@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 interface SolutionItem {
   image: string;
@@ -53,6 +53,15 @@ const solutions: SolutionItem[] = [
 
 export default function Solution() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNavigation = (direction: 'prev' | 'next') => {
+    if (direction === 'prev') {
+      setCurrentIndex(current => (current > 0 ? current - 1 : solutions.length - 1));
+    } else {
+      setCurrentIndex(current => (current < solutions.length - 1 ? current + 1 : 0));
+    }
+  };
 
   return (
     <div className="w-full bg-[#F5F5F5]">
@@ -76,40 +85,108 @@ export default function Solution() {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {solutions.map((solution, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 5 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <Card className={`h-full border-0 rounded-none bg-white overflow-hidden transition-all duration-300 ${
-                hoveredIndex === index ? 'shadow-2xl translate-y-[-8px]' : 'shadow-lg'
-              }`}>
-                <div className="p-8">
-                  <div className={`mb-6 transform transition-transform duration-300 ${
-                    hoveredIndex === index ? 'scale-100' : ''
-                  }`}>
-                    <img src={solution.image} alt={solution.title} className="w-16 h-16" />
+        {/* Solutions grid with responsive layout */}
+        <div className="relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Mobile and Tablet View */}
+            <div className="lg:hidden">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.3 }}
+                className="w-full"
+              >
+                <Card className="h-full border-0 rounded-none bg-white overflow-hidden transition-all duration-300 shadow-lg">
+                  <div className="p-8">
+                    <div className="mb-6">
+                      <img src={solutions[currentIndex].image} alt={solutions[currentIndex].title} className="w-16 h-16" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-4">{solutions[currentIndex].title}</h3>
+                    <p className="text-gray-600 text-xs leading-relaxed mb-6">{solutions[currentIndex].description}</p>
+                    <div className="pt-5 mt-2 border-t-2 border-gray-200">
+                      <a 
+                        href="#" 
+                        className="group inline-flex items-center text-red-600 font-medium text-sm"
+                      >
+                        Learn more
+                        <ChevronRight size={16} className="ml-1 transition-transform duration-300 group-hover:translate-x-1" />
+                      </a>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-4">{solution.title}</h3>
-                  <p className="text-gray-600 text-xs leading-relaxed mb-6">{solution.description}</p>
-                  <div className="pt-5 mt-2 border-t-2 border-gray-200">
-                    <a 
-                      href="#" 
-                      className="group inline-flex items-center text-red-600 font-medium text-sm"
+                </Card>
+
+                {/* Simplified Navigation controls */}
+                <div className="mt-6 flex flex-col items-center space-y-4">
+                  {/* Progress indicators */}
+                  <div className="flex justify-center space-x-2">
+                    {solutions.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          currentIndex === index ? 'bg-red-600 w-4' : 'bg-gray-300'
+                        }`}
+                        onClick={() => setCurrentIndex(index)}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Simplified arrow buttons */}
+                  <div className="flex items-center justify-center space-x-4">
+                    <button
+                      onClick={() => handleNavigation('prev')}
+                      className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
                     >
-                      Learn more
-                      <ChevronRight size={16} className="ml-1 transition-transform duration-300 group-hover:translate-x-1" />
-                    </a>
+                      <ChevronLeft className="h-5 w-5 text-gray-600" />
+                    </button>
+                    <button
+                      onClick={() => handleNavigation('next')}
+                      className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      <ChevronRight className="h-5 w-5 text-gray-600" />
+                    </button>
                   </div>
                 </div>
-              </Card>
-            </motion.div>
-          ))}
+              </motion.div>
+            </div>
+
+            {/* Desktop View */}
+            {solutions.map((solution, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="hidden lg:block"
+              >
+                <Card className={`h-full border-0 rounded-none bg-white overflow-hidden transition-all duration-300 ${
+                  hoveredIndex === index ? 'shadow-2xl translate-y-[-8px]' : 'shadow-lg'
+                }`}>
+                  <div className="p-8">
+                    <div className={`mb-6 transform transition-transform duration-300 ${
+                      hoveredIndex === index ? 'scale-100' : ''
+                    }`}>
+                      <img src={solution.image} alt={solution.title} className="w-16 h-16" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-4">{solution.title}</h3>
+                    <p className="text-gray-600 text-xs leading-relaxed mb-6">{solution.description}</p>
+                    <div className="pt-5 mt-2 border-t-2 border-gray-200">
+                      <a 
+                        href="#" 
+                        className="group inline-flex items-center text-red-600 font-medium text-sm"
+                      >
+                        Learn more
+                        <ChevronRight size={16} className="ml-1 transition-transform duration-300 group-hover:translate-x-1" />
+                      </a>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         <motion.div 

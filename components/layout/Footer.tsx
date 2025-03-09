@@ -62,15 +62,15 @@ export function Footer() {
             <div className="md:w-1/2 mb-8 md:mb-0">
               {/* Solutions Section */}
               <div className="mb-12">
-                <h2 className="text-2xl font-bold mb-6">Solutions</h2>
+                <h2 className="text-xl md:text-2xl font-bold mb-6">Solutions</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4">
-                  <div className="space-y-4 w-[200px]">
+                  <div className="space-y-4 w-full md:w-[200px]">
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Digital Strategy & Design</p>
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Application Development and Management</p>
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Cloud & Infrastructure</p>
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Software-as-a-Service</p>
                   </div>
-                  <div className="space-y-4 w-[200px]">
+                  <div className="space-y-4 w-full md:w-[200px]">
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Digital & Brand Marketing</p>
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Generative AI & Business Intelligence</p>
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Network Connectivity</p>
@@ -81,9 +81,9 @@ export function Footer() {
 
               {/* Company Section */}
               <div className="mb-12">
-                <h2 className="text-2xl font-bold mb-6">Company</h2>
+                <h2 className="text-xl md:text-2xl font-bold mb-6">Company</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4">
-                  <div className="space-y-4 w-[200px]">
+                  <div className="space-y-4 w-full md:w-[200px]">
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Events</p>
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Why us</p>
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Team</p>
@@ -91,7 +91,7 @@ export function Footer() {
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Partners & Certifications</p>
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Reviews & Awards</p>
                   </div>
-                  <div className="space-y-4 w-[200px]">
+                  <div className="space-y-4 w-full md:w-[200px]">
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Blog</p>
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Case studies</p>
                     <p className="text-gray-400 text-sm hover:text-white cursor-pointer">Events</p>

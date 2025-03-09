@@ -60,23 +60,23 @@ const LatestNews = () => {
     };
 
     return (
-        <section className="py-12 px-28 max-w-8xl mx-auto">
-            <div className='ml-5'>
+        <section className="py-6 md:py-8 lg:py-12 px-4 sm:px-6 md:px-12 lg:px-28 max-w-8xl mx-auto">
+            <div className='ml-2 md:ml-5'>
                 <a href="#" className="text-red-600 text-sm font-semibold underline">
                     About Finolity Consultancy Services
                 </a>
-                <h2 className="text-2xl font-bold mt-4 mb-2">Latest News</h2>
+                <h2 className="text-xl md:text-2xl font-bold mt-3 md:mt-4 mb-2">Latest News</h2>
             </div>
 
             <div className="relative">
-                <div ref={scrollContainer} className="flex space-x-6 overflow-x-auto scrollbar-hide p-4" style={{ scrollbarWidth: 'none' }}>
+                <div ref={scrollContainer} className="flex space-x-4 md:space-x-6 overflow-x-auto scrollbar-hide p-2 md:p-4" style={{ scrollbarWidth: 'none' }}>
                     {newsItems.map((news, index) => (
-                        <Card key={index} className="border border-gray-200 shadow-md overflow-hidden min-w-[350px] max-w-[350px]">
-                            <Image src={news.image} alt={news.title} width={600} height={400} className="w-full h-64 object-cover" />
-                            <CardContent className="p-4 pb-28 flex flex-col justify-between">
-                                <p className="text-gray-500 text-sm">{news.source} | {news.date}</p>
-                                <h3 className="text-lg font-semibold mt-2 leading-tight">{news.title}</h3>
-                                <a href={news.link} className="text-red-500 text-sm font-semibold mt-4 inline-block">
+                        <Card key={index} className="border border-gray-200 shadow-md overflow-hidden min-w-[280px] sm:min-w-[320px] md:min-w-[350px] max-w-[350px]">
+                            <Image src={news.image} alt={news.title} width={600} height={400} className="w-full h-48 md:h-64 object-cover" />
+                            <CardContent className="p-3 md:p-4 pb-16 md:pb-28 flex flex-col justify-between">
+                                <p className="text-gray-500 text-xs md:text-sm">{news.source} | {news.date}</p>
+                                <h3 className="text-base md:text-lg font-semibold mt-2 leading-tight">{news.title}</h3>
+                                <a href={news.link} className="text-red-500 text-xs md:text-sm font-semibold mt-3 md:mt-4 inline-block">
                                     Read more
                                 </a>
                             </CardContent>
@@ -85,11 +85,11 @@ const LatestNews = () => {
                 </div>
             </div>
 
-            <div className="mt-2 flex justify-end space-x-4">
-                <Button onClick={() => scroll('left')} className="bg-black text-white px-6 py-2 rounded-md">
+            <div className="mt-2 flex justify-center md:justify-end space-x-3 md:space-x-4">
+                <Button onClick={() => scroll('left')} className="bg-black text-white px-4 md:px-6 py-1 md:py-2 rounded-md text-sm md:text-base">
                     &lt; Previous
                 </Button>
-                <Button onClick={() => scroll('right')} className="bg-black text-white px-6 py-2 rounded-md">
+                <Button onClick={() => scroll('right')} className="bg-black text-white px-4 md:px-6 py-1 md:py-2 rounded-md text-sm md:text-base">
                     Next &gt;
                 </Button>
             </div>

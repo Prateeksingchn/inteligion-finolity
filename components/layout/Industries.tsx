@@ -71,31 +71,65 @@ const IndustryBadges = () => {
 
     return (
         <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[910px] mx-auto"
+            className="max-w-[910px] mx-auto"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
         >
-            {industries.map((industry, index) => (
-                <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    className="flex items-center bg-[#F5F5F5] rounded-full h-16 cursor-pointer"
-                >
-                    <div className="relative h-14 w-14 mr-4 overflow-hidden">
-                        <Image
-                            src={industry.image}
-                            alt={industry.title}
-                            width={55}
-                            height={55}
-                            className="object-cover rounded-full"
-                        />
-                    </div>
-                    <h3 className="font-bold text-[16px] text-gray-800 w-auto pr-2">
-                        {industry.title}
-                    </h3>
-                </motion.div>
-            ))}
+            {/* Mobile view - List style */}
+            <div className="lg:hidden space-y-4">
+                {industries.map((industry, index) => (
+                    <motion.div
+                        key={index}
+                        variants={itemVariants}
+                        whileHover="hover"
+                        className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200"
+                    >
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-4">
+                                <div className="relative h-12 w-12 flex-shrink-0">
+                                    <Image
+                                        src={industry.image}
+                                        alt={industry.title}
+                                        width={48}
+                                        height={48}
+                                        className="object-cover rounded-full"
+                                    />
+                                </div>
+                                <h3 className="font-semibold text-[16px] text-gray-800">
+                                    {industry.title}
+                                </h3>
+                            </div>
+                            <ChevronRight className="h-5 w-5 text-gray-400" />
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+
+            {/* Desktop view - Grid style (existing) */}
+            <div className="hidden lg:grid grid-cols-3 gap-6">
+                {industries.map((industry, index) => (
+                    <motion.div
+                        key={index}
+                        variants={itemVariants}
+                        whileHover="hover"
+                        className="flex items-center bg-[#F5F5F5] rounded-full h-16 cursor-pointer"
+                    >
+                        <div className="relative h-14 w-14 mr-4 overflow-hidden">
+                            <Image
+                                src={industry.image}
+                                alt={industry.title}
+                                width={55}
+                                height={55}
+                                className="object-cover rounded-full"
+                            />
+                        </div>
+                        <h3 className="font-bold text-[16px] text-gray-800 w-auto pr-2">
+                            {industry.title}
+                        </h3>
+                    </motion.div>
+                ))}
+            </div>
         </motion.div>
     );
 };
@@ -214,7 +248,7 @@ export default function Industries() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
         >
-            {/* Enhanced decorative backgrounds */}
+            {/* Background decorations */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-orange-100/40 rounded-full blur-3xl -z-10"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl -z-10"></div>
             <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-purple-100/30 rounded-full blur-3xl -z-10"></div>
@@ -250,7 +284,7 @@ export default function Industries() {
                     </div>
 
                     {/* Image/Video container with improved transitions */}
-                    <div className="relative w-full h-[600px] z-10">
+                    <div className="relative w-full h-[200px] lg:h-[600px] z-10">
                         <motion.div
                             animate={{ opacity: showVideo && videoLoaded ? 0 : 1 }}
                             transition={{ duration: 0.8 }}
@@ -292,7 +326,7 @@ export default function Industries() {
                     className="absolute bottom-20 right-8 md:right-[270px] z-20"
                 >
                     <div className="flex items-center justify-center mb-3">
-                        <div className="relative h-12 w-36">
+                        <div className="relative h-6 md:h-12 md:w-36 w-10">
                             <Image
                                 src="https://finolity.com/wp-content/uploads/2023/03/clutch-logo.png"
                                 alt="Clutch Logo"
@@ -305,7 +339,7 @@ export default function Industries() {
                 </div>
             </motion.div>
 
-            {/* Content section with improved animations */}
+            {/* Content section */}
             <motion.div
                 ref={contentRef}
                 className="max-w-[955px] mx-auto px-6"
@@ -313,10 +347,7 @@ export default function Industries() {
                 initial="hidden"
                 animate={contentControls}
             >
-                <motion.div
-                    variants={contentVariants}
-                    className="mb-10"
-                >
+                <motion.div variants={contentVariants} className="mb-10">
                     <div className="flex flex-col items-center md:items-start text-center md:text-left">
                         <motion.div
                             variants={itemVariants}
@@ -324,21 +355,22 @@ export default function Industries() {
                         >
                             HOW WE DO
                         </motion.div>
-
                         <motion.h1
                             variants={itemVariants}
-                            className="text-4xl md:text-5xl font-bold relative max-w-3xl"
+                            className="text-3xl md:text-4xl lg:text-5xl font-bold relative max-w-3xl mb-12 px-4 md:px-0"
                         >
                             <span className="relative inline-block">
                                 Solving IT challenges
-                            </span> in every industry, every day.
+                            </span>{" "}
+                            in every industry, every day.
                         </motion.h1>
                     </div>
                 </motion.div>
 
-                {/* Industry badges */}
+                {/* Industry badges component */}
                 <IndustryBadges />
 
+                {/* View All Industries link */}
                 <motion.div
                     variants={itemVariants}
                     className="flex justify-center md:justify-start mt-8 mb-20"

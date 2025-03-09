@@ -33,15 +33,14 @@ export function MetricsAndServices() {
     };
 
     return (
-        <div className='flex flex-col items-center justify-center w-full border-t-4 border-gray-200'>
+        <div className='flex flex-col items-center justify-center w-full border-t-2 sm:border-t-4 border-gray-200'>
             {/* Metrics Section*/}
-            <section className="py-12 w-full mb-12 relative overflow-hidden">
-
-                <div className="max-w-7xl mx-auto px-4 relative z-10">
-                    <div className="grid grid-cols-1 md:grid-cols-5 gap-5 items-center">
+            <section className="py-6 sm:py-8 md:py-12 w-full mb-6 sm:mb-8 md:mb-12 relative overflow-hidden">
+                <div className="max-w-7xl mx-auto px-3 sm:px-4 relative z-10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 md:gap-5 items-center">
                         {/* Clutch Reviews - Enhanced with card design */}
                         <motion.div
-                            className="p-[17px] hover:shadow-md transition-all duration-300  border-r-4 border-gray-200"
+                            className="p-3 sm:p-4 md:p-[17px] hover:shadow-md transition-all duration-300 border-b-2 sm:border-b-0 sm:border-r-2 md:border-r-4 border-gray-200 mb-4 sm:mb-0"
                             custom={1}
                             initial="hidden"
                             whileInView="visible"
@@ -49,20 +48,20 @@ export function MetricsAndServices() {
                             variants={scaleIn}
                             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
                         >
-                            <div className="flex flex-col md:flex-row items-start md:items-center justify-start">
-                                <div className="flex flex-col mb-2 md:mb-0">
+                            <div className="flex flex-row items-center justify-start">
+                                <div className="flex flex-col">
                                     <div className="text-xs text-gray-600 uppercase font-medium">REVIEWED ON</div>
-                                    <span className="font-bold text-2xl text-gray-800">Clutch</span>
+                                    <span className="font-bold text-xl sm:text-2xl text-gray-800">Clutch</span>
                                 </div>
-                                <div className="flex flex-col items-start md:items-start md:ml-3">
+                                <div className="flex flex-col items-start ml-3">
                                     <div className="flex">
                                         {[1, 2, 3, 4, 5].map(star => (
-                                            <svg key={star} className="w-5 h-5 text-red-500 fill-current" viewBox="0 0 24 24">
+                                            <svg key={star} className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 fill-current" viewBox="0 0 24 24">
                                                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                                             </svg>
                                         ))}
                                     </div>
-                                    <span className="mt-2 text-xs text-gray-600 font-medium">2K+ REVIEWS</span>
+                                    <span className="mt-1 sm:mt-2 text-xs text-gray-600 font-medium">2K+ REVIEWS</span>
                                 </div>
                             </div>
                         </motion.div>
@@ -76,7 +75,9 @@ export function MetricsAndServices() {
                         ].map((metric, index) => (
                             <motion.div
                                 key={index}
-                                className={`p-4 hover:shadow-md transition-all duration-300 border-r-4 border-gray-200 ${index === 3 ? 'border-r-0' : ''}`}
+                                className={`p-3 sm:p-4 hover:shadow-md transition-all duration-300 
+                                  ${index < 3 ? 'border-b-2 sm:border-b-0 sm:border-r-2 md:border-r-4 border-gray-200 mb-4 sm:mb-0' : 
+                                   index === 3 && 'sm:col-span-2 md:col-span-1'}`}
                                 custom={index + 2}
                                 initial="hidden"
                                 whileInView="visible"
@@ -85,10 +86,10 @@ export function MetricsAndServices() {
                                 whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
                             >
                                 <div className="flex items-baseline mb-1">
-                                    <span className="text-3xl font-bold text-gray-800">{metric.value}</span>
-                                    <span className="ml-1 text-xl font-medium text-gray-800">{metric.unit}</span>
+                                    <span className="text-2xl sm:text-3xl font-bold text-gray-800">{metric.value}</span>
+                                    <span className="ml-1 text-lg sm:text-xl font-medium text-gray-800">{metric.unit}</span>
                                 </div>
-                                <div className="text-sm text-gray-600">{metric.description}</div>
+                                <div className="text-xs sm:text-sm text-gray-600">{metric.description}</div>
                             </motion.div>
                         ))}
                     </div>
@@ -97,7 +98,7 @@ export function MetricsAndServices() {
 
             {/* "What We Do" Section */}
             <motion.section
-                className="py-10 bg-black relative overflow-hidden w-[85%] rounded-lg shadow-xl mb-10"
+                className="py-6 sm:py-8 md:py-10 bg-black relative overflow-hidden w-full sm:w-[90%] md:w-[85%] rounded-none lg:rounded-lg shadow-xl mb-6 sm:mb-8 md:mb-10"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -105,7 +106,7 @@ export function MetricsAndServices() {
             >
                 {/* Enhanced dot pattern with animation */}
                 <motion.div
-                    className="absolute -right-20 top-24 h-full w-[600px]"
+                    className="absolute -right-20 top-24 h-full w-[300px] sm:w-[400px] md:w-[600px]"
                     animate={{
                         x: [0, 10, 0],
                         y: [0, -10, 0],
@@ -129,7 +130,7 @@ export function MetricsAndServices() {
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent z-0"></div>
 
-                <div className="max-w-auto mx-auto px-12 relative z-10 flex flex-col justify-between min-h-[280px]">
+                <div className="max-w-auto mx-auto px-6 sm:px-8 md:px-12 relative z-10 flex flex-col justify-between min-h-[200px] sm:min-h-[240px] md:min-h-[280px]">
                     {/* Top heading with animation */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -148,12 +149,12 @@ export function MetricsAndServices() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, delay: 0.2 }}
                     >
-                        <h2 className="text-5xl font-bold text-white leading-tight">
+                        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
                             Simplifying IT<br />
                             <span className="relative">
                                 for a complex world.
                                 <motion.span
-                                    className="absolute -bottom-2 left-0 w-full h-1 bg-red-600/80"
+                                    className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-1 bg-red-600/80"
                                     initial={{ width: 0 }}
                                     whileInView={{ width: "60%" }}
                                     viewport={{ once: true }}
@@ -166,9 +167,9 @@ export function MetricsAndServices() {
             </motion.section>
 
             {/* Services Grid*/}
-            <section className="py-16 px-4 w-[90%] bg-white rounded-xl mb-16">
+            <section className="py-8 sm:py-12 md:py-16 px-0 sm:px-4 w-[95%] sm:w-[92%] md:w-[90%] bg-white rounded-xl mb-8 sm:mb-12 md:mb-16">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
                         {[
                             {
                                 icon: "https://finolity.com/wp-content/uploads/2023/12/Untitled-design-4.png",
@@ -208,8 +209,8 @@ export function MetricsAndServices() {
                                 variants={fadeInUp}
                                 className="group"
                             >
-                                <div className="p-6 rounded-xl border border-gray-100 bg-white hover:shadow-lg transition-all duration-300 group-hover:border-gray-200 h-full flex flex-col">
-                                    <div className="mb-6 relative">
+                                <div className="p-4 sm:p-5 md:p-6 rounded-xl border border-gray-100 bg-white hover:shadow-lg transition-all duration-300 group-hover:border-gray-200 h-full flex flex-col">
+                                    <div className="mb-4 sm:mb-5 md:mb-6 relative">
                                         <div className={`absolute -inset-1 rounded-lg bg-${service.color}-100/30 blur-md opacity-0 group-hover:opacity-100 transition-all duration-300`}></div>
                                         <div className="relative">
                                             <Image
@@ -221,8 +222,8 @@ export function MetricsAndServices() {
                                             />
                                         </div>
                                     </div>
-                                    <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-red-600 transition-colors duration-300">{service.title}</h3>
-                                    <p className="text-gray-600 text-sm flex-grow">{service.description}</p>
+                                    <h3 className="text-xl sm:text-xl md:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 group-hover:text-red-600 transition-colors duration-300">{service.title}</h3>
+                                    <p className="text-xs sm:text-sm text-gray-600 flex-grow">{service.description}</p>
                                 </div>
                             </motion.div>
                         ))}

@@ -110,10 +110,10 @@ export default function RecognitionSection() {
   }, [leftCardControls, rightCardControls, isLeftCardInView, isRightCardInView]);
 
   return (
-    <section className="py-24 relative overflow-hidden min-h-[150vh] bg-white">
+    <section className="py-12 md:py-16 lg:py-24 relative overflow-hidden min-h-screen md:min-h-[150vh] bg-white">
       {/* Background images from public/recognition */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {/* Cloud images */}
+        {/* Cloud images - made responsive by using relative positioning based on screen size */}
         <FloatingImage 
           src="/recognition/cloud4.png" 
           size={70} 
@@ -224,13 +224,13 @@ export default function RecognitionSection() {
         />
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Premium section title */}
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center text-3xl font-light text-gray-600 mb-16 tracking-wider"
+          className="text-center text-2xl sm:text-3xl font-light text-gray-600 mb-10 md:mb-16 tracking-wider"
         >
           <span className="inline-block relative">
             RECOGNITION & ACHIEVEMENTS
@@ -254,7 +254,7 @@ export default function RecognitionSection() {
             initial="hidden"
             animate={leftCardControls}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="bg-black text-white p-12 rounded-[40px] w-full md:w-[48%] md:h-[560px] overflow-hidden relative backdrop-blur-sm shadow-xl"
+            className="bg-black text-white p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl md:rounded-[40px] w-full md:w-[48%] md:h-[560px] overflow-hidden relative backdrop-blur-sm shadow-xl"
           >
             {/* Premium glass effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-black opacity-80" />
@@ -272,9 +272,9 @@ export default function RecognitionSection() {
             
             {/* Animated accent line */}
             <motion.div 
-              className="absolute top-0 left-0 h-1 w-24 bg-red-600"
+              className="absolute top-0 left-0 h-1 w-16 sm:w-24 bg-red-600"
               initial={{ width: 0 }}
-              animate={{ width: 96 }}
+              animate={{ width: 64 }}
               transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
             />
             
@@ -287,14 +287,14 @@ export default function RecognitionSection() {
                 initial="hidden"
                 animate={leftCardControls}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-5xl font-bold mb-24"
+                className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16 md:mb-24"
               >
                 Organizations<br />
                 recognized our<br />
                 work
               </motion.h2>
               
-              <div className="grid grid-cols-3 gap-4 mb-24">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-4 mb-12 sm:mb-16 md:mb-24">
                 <AwardCard 
                   title="Forbes" 
                   description="Forbes Member Council 2022" 
@@ -327,7 +327,7 @@ export default function RecognitionSection() {
                   transition: { duration: 0.2 }
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="bg-red-600 text-white px-6 py-3 rounded-md font-normal inline-flex items-center gap-2 group transition-all"
+                className="bg-red-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md font-normal inline-flex items-center gap-2 group transition-all"
               >
                 <span>View more awards</span>
                 <motion.svg 
@@ -350,7 +350,7 @@ export default function RecognitionSection() {
             
             {/* Modern circular accent detail */}
             <motion.div 
-              className="absolute bottom-6 right-6 w-24 h-24 rounded-full border border-gray-700 opacity-40"
+              className="absolute bottom-6 right-6 w-16 sm:w-24 h-16 sm:h-24 rounded-full border border-gray-700 opacity-40"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 0.4 }}
               transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
@@ -358,7 +358,7 @@ export default function RecognitionSection() {
             
             {/* Premium inner accent ring */}
             <motion.div 
-              className="absolute bottom-6 right-6 w-12 h-12 rounded-full border border-red-700 opacity-0"
+              className="absolute bottom-6 right-6 w-8 sm:w-12 h-8 sm:h-12 rounded-full border border-red-700 opacity-0"
               initial={{ scale: 0 }}
               animate={{ 
                 scale: [0, 1.5, 1], 
@@ -384,7 +384,7 @@ export default function RecognitionSection() {
             initial="hidden"
             animate={rightCardControls}
             transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
-            className="bg-[#f8ecd8] p-12 rounded-[40px] w-full md:w-[48%] mt-6 md:mt-0 md:absolute md:top-[50%] md:right-0 md:transform md:-translate-y-1/4 relative overflow-hidden md:h-[560px] shadow-xl"
+            className="bg-[#f8ecd8] p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl md:rounded-[40px] w-full md:w-[48%] mt-6 md:mt-0 md:absolute md:top-[50%] md:right-0 md:transform md:-translate-y-1/4 relative overflow-hidden md:h-[560px] shadow-xl"
           >
             {/* Premium subtle shine effect */}
             <motion.div 
@@ -408,7 +408,7 @@ export default function RecognitionSection() {
                 initial="hidden"
                 animate={rightCardControls}
                 transition={{ delay: 0.7, duration: 0.6 }}
-                className="text-[#0f1033] text-5xl font-bold mb-32 leading-[1.2]"
+                className="text-[#0f1033] text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-20 md:mb-32 leading-[1.2]"
               >
                 Finolity has been<br />
                 recognized as a<br />
@@ -458,7 +458,7 @@ export default function RecognitionSection() {
               </motion.a>
             </div>
             
-            {/* Original dotted shape image with animation */}
+            {/* Original dotted shape image with animation - made responsive */}
             <motion.div 
               variants={{
                 hidden: { opacity: 0, scale: 0.9, rotate: -5 },
@@ -467,7 +467,7 @@ export default function RecognitionSection() {
               initial="hidden"
               animate={rightCardControls}
               transition={{ delay: 1.1, duration: 0.8 }}
-              className="absolute bottom-0 right-0"
+              className="absolute bottom-0 right-0 w-40 sm:w-48 md:w-auto"
             >
               <Image 
                 src="https://finolity.com/wp-content/uploads/2023/03/shape-dots-black.svg"
@@ -480,15 +480,15 @@ export default function RecognitionSection() {
 
             {/* Animated accent line */}
             <motion.div 
-              className="absolute top-6 right-6 h-1 w-16 bg-red-600"
+              className="absolute top-6 right-6 h-1 w-12 sm:w-16 bg-red-600"
               initial={{ width: 0 }}
-              animate={{ width: 64 }}
+              animate={{ width: 48 }}
               transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
             />
             
             {/* Decorative corner flourish */}
             <motion.div 
-              className="absolute top-6 left-6 w-8 h-8"
+              className="absolute top-6 left-6 w-6 sm:w-8 h-6 sm:h-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.5, duration: 0.6 }}
