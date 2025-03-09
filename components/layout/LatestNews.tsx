@@ -1,104 +1,100 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { useState } from "react";
+'use client';
+
+import React, { useRef } from 'react';
+import Image from 'next/image';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 interface NewsItem {
-  image: string;
-  source: string;
-  date: string;
-  title: string;
-  link: string;
+    image: string;
+    title: string;
+    date: string;
+    source: string;
+    link: string;
 }
 
-const newsData: NewsItem[] = [
-  {
-    image: "https://finolity.com/wp-content/uploads/2025/01/ABP-NEWS.jpg",
-    source: "ABP NEWS",
-    date: "January 24, 2024",
-    title: "Empowering Universities: Finolity's Digital Campus Program And Strategic Partnerships",
-    link: "#",
-  },
-  {
-    image: "/news-image-2.jpg",
-    source: "NDTVProfit",
-    date: "October 25, 2024",
-    title: "Finolity Becomes Authorized Corel Partner, Offering Cutting-Edge Software Solutions to Businesses",
-    link: "#",
-  },
-  {
-    image: "/news-image-3.jpg",
-    source: "Economictimes",
-    date: "December 1, 2024",
-    title: "Finolity Achieves Certified Adobe Reseller Status, Expanding Access to Premium Creative Tools",
-    link: "#",
-  },
-  {
-    image: "/news-image-4.jpg",
-    source: "The Straits Times",
-    date: "November 15, 2024",
-    title: "Finolity Launches New 'Namestair' to Provide Cloud Services and Solutions for SMBs",
-    link: "#",
-  },
-  {
-    image: "/news-image-5.jpg",
-    source: "Business Today",
-    date: "December 10, 2024",
-    title: "Finolity Expands Global Reach with New Partnerships in Europe",
-    link: "#",
-  },
+const newsItems: NewsItem[] = [
+    {
+        image: "https://finolity.com/wp-content/uploads/2025/01/ABP-NEWS.jpg",
+        title: "Empowering Universities: Finolity's Digital Campus Program And Strategic Partnerships",
+        date: "January 24, 2024",
+        source: "ABP NEWS",
+        link: "#"
+    },
+    {
+        image: "https://finolity.com/wp-content/uploads/2025/01/ABP-NEWS-4.jpg",
+        title: "Finolity Becomes Authorized Corel Partner, Offering Cutting-Edge Software Solutions to Businesses",
+        date: "October 25, 2024",
+        source: "NDTVProfit",
+        link: "#"
+    },
+    {
+        image: "https://finolity.com/wp-content/uploads/2025/01/ABP-NEWS-1.jpg",
+        title: "Finolity Achieves Certified Adobe Reseller Status, Expanding Access to Premium Creative Tools",
+        date: "December 1, 2024",
+        source: "Economictimes",
+        link: "#"
+    },
+    {
+        image: "https://finolity.com/wp-content/uploads/2025/01/ABP-NEWS-2.jpg",
+        title: "Finolity Launches New 'Namestair' to Provide Cloud Services and Solutions for SMBs",
+        date: "November 1, 2024",
+        source: "The Straits Times",
+        link: "#"
+    },
 ];
 
-const ITEMS_PER_PAGE = 4;
+const LatestNews = () => {
+    const scrollContainer = useRef<HTMLDivElement>(null);
 
-export default function News() {
-  const [currentPage, setCurrentPage] = useState(0);
+    const scroll = (direction: 'left' | 'right') => {
+        if (scrollContainer.current) {
+            const { scrollLeft, clientWidth } = scrollContainer.current;
+            const scrollAmount = clientWidth * 0.9; // Adjust scroll step
 
-  const totalPages = Math.ceil(newsData.length / ITEMS_PER_PAGE);
-  const visibleNews = newsData.slice(currentPage * ITEMS_PER_PAGE, (currentPage + 1) * ITEMS_PER_PAGE);
+            scrollContainer.current.scrollTo({
+                left: direction === 'left' ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    };
 
-  const nextPage = () => {
-    if (currentPage < totalPages - 1) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
+    return (
+        <section className="py-12 px-28 max-w-8xl mx-auto">
+            <div className='ml-5'>
+                <a href="#" className="text-red-600 text-sm font-semibold underline">
+                    About Finolity Consultancy Services
+                </a>
+                <h2 className="text-2xl font-bold mt-4 mb-2">Latest News</h2>
+            </div>
 
-  const prevPage = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
+            <div className="relative">
+                <div ref={scrollContainer} className="flex space-x-6 overflow-x-auto scrollbar-hide p-4" style={{ scrollbarWidth: 'none' }}>
+                    {newsItems.map((news, index) => (
+                        <Card key={index} className="border border-gray-200 shadow-md overflow-hidden min-w-[350px] max-w-[350px]">
+                            <Image src={news.image} alt={news.title} width={600} height={400} className="w-full h-64 object-cover" />
+                            <CardContent className="p-4 pb-28 flex flex-col justify-between">
+                                <p className="text-gray-500 text-sm">{news.source} | {news.date}</p>
+                                <h3 className="text-lg font-semibold mt-2 leading-tight">{news.title}</h3>
+                                <a href={news.link} className="text-red-500 text-sm font-semibold mt-4 inline-block">
+                                    Read more
+                                </a>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </div>
+            </div>
 
-  return (
-    <section className="py-12 px-20 max-w-8xl mx-auto">
-      <a href="#" className="text-red-600 font-semibold underline">
-        About Finolity Consultancy Services
-      </a>
-      <h2 className="text-4xl font-bold mt-4 mb-8">Latest News</h2>
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {visibleNews.map((news, index) => (
-          <Card key={index} className="border border-gray-200 shadow-md overflow-hidden w-full">
-            <Image src={news.image} alt={news.title} width={400} height={300} className="w-full h-52 object-cover" />
-            <CardContent className="p-4 flex flex-col justify-between">
-              <p className="text-gray-500 text-sm">{news.source} | {news.date}</p>
-              <h3 className="text-lg font-semibold mt-2">{news.title}</h3>
-              <a href={news.link} className="text-red-600 font-semibold mt-4 inline-block">
-                Read more
-              </a>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+            <div className="mt-2 flex justify-end space-x-4">
+                <Button onClick={() => scroll('left')} className="bg-black text-white px-6 py-2 rounded-md">
+                    &lt; Previous
+                </Button>
+                <Button onClick={() => scroll('right')} className="bg-black text-white px-6 py-2 rounded-md">
+                    Next &gt;
+                </Button>
+            </div>
+        </section>
+    );
+};
 
-      <div className="mt-10 flex justify-end space-x-4">
-        <Button onClick={prevPage} disabled={currentPage === 0} className="bg-black text-white px-6 py-2 rounded-md disabled:opacity-50">
-          &lt; Previous
-        </Button>
-        <Button onClick={nextPage} disabled={currentPage === totalPages - 1} className="bg-black text-white px-6 py-2 rounded-md disabled:opacity-50">
-          Next &gt;
-        </Button>
-      </div>
-    </section>
-  );
-}
+export default LatestNews;
