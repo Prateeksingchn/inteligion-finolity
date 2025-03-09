@@ -1,6 +1,7 @@
 import LatestNews from '../components/layout/LatestNews'; // Adjust the path as necessary
 import UpcomingEvents from '../components/layout/UpcomingEvents'; // Adjust the path as necessary
 import RecognitionSection from '../components/layout/RecognitionSection'; // Adjust the path as necessary
+import CompanyRecognize from '@/components/layout/CompanyRecognize';
 
 export default function Page() {
     return (
@@ -11,6 +12,8 @@ export default function Page() {
             <UpcomingEvents /> {/* Add the Upcoming Events section here */}
             <VendorsSection />
             <RecognitionSection /> {/* Add the Recognition Section here */}
+            <TestimonialsSection />
+            <CompanyRecognize />
             {/* Other components */}
         </div>
     );

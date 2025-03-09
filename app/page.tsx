@@ -11,6 +11,7 @@ import VendorsSection from '@/components/layout/VendorsSection';
 import RecognitionSection from '@/components/layout/RecognitionSection';
 import SuccessStoriesSection from '@/components/layout/SuccessStoriesSection';
 import TestimonialsSection from '@/components/layout/TestimonialsSection';
+import CompanyRecognize from '@/components/layout/CompanyRecognize';
 import { Features } from '@/components/layout/Features';
 import { CTA } from '@/components/layout/CTA';
 import { Footer } from '@/components/layout/Footer';
@@ -29,6 +30,7 @@ export default function Home() {
       <RecognitionSection /> 
       <SuccessStoriesSection />
       <TestimonialsSection />
+      <CompanyRecognize />
       <Features />
       <CTA />
       <Footer />
