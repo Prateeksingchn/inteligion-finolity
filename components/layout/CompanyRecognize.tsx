@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 
 export default function CompanyRecognize() {
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function CompanyRecognize() {
   ];
   
   // Generate unique entrance animations for each logo
-  const getEntranceStyle = (index, delay) => {
+  const getEntranceStyle = (index: number, delay: number): React.CSSProperties => {
     const animation = logoAnimations[index];
     
     // Different entrance origins based on position
