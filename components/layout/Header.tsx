@@ -56,7 +56,8 @@ export function Header() {
 
   // Toggle function for mobile dropdowns
   const toggleMobileMenu = (menu: string): void => {
-    setOpenMobileMenus(prev => ({
+    // Adding a comment to force a refresh
+    setOpenMobileMenus((prev) => ({
       ...prev,
       [menu]: !prev[menu]
     }));
