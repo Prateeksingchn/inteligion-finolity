@@ -36,27 +36,27 @@ export default function SuccessStoriesSection() {
           {stories.map((story, index) => (
             <div 
               key={index} 
-              className="rounded-2xl overflow-hidden border border-gray-200 bg-white hover:shadow-lg transition-shadow duration-300"
+              className="rounded-2xl overflow-hidden border border-gray-300 bg-white hover:shadow-lg transition-shadow duration-300"
               style={{
                 background: "linear-gradient(to bottom right, #ffffff, #f8f9fa)",
                 boxShadow: "0 2px 10px rgba(0,0,0,0.03)"
               }}
             >
-              <div className="rounded-t-lg overflow-hidden m-4">
+              <div className="rounded-t-lg overflow-hidden mx-4 mt-4">
                 <Image
                   src={story.image}
                   alt={story.title}
                   width={600}
-                  height={350}
-                  className="object-cover w-full h-56 rounded-lg"
+                  height={300}
+                  className="object-cover w-full h-52 rounded-lg"
                 />
               </div>
-              <div className="p-6">
-                <div className="mb-4">
+              <div className="p-5">
+                <div className="mb-2">
                   {story.categories.map((category, idx) => (
                     <React.Fragment key={idx}>
                       {idx > 0 && <span className="text-gray-300 mx-1">•</span>}
-                      <span className="text-xs text-gray-400 uppercase">
+                      <span className="text-[11px] tracking-tighter text-gray-400 uppercase">
                         {category}
                       </span>
                     </React.Fragment>
@@ -65,7 +65,7 @@ export default function SuccessStoriesSection() {
                 <h3 className="text-xl font-semibold mb-6 text-gray-800 leading-tight">{story.title}</h3>
                 <a 
                   href="#" 
-                  className="text-gray-800 hover:text-black text-sm font-medium transition-colors"
+                  className="text-gray-800 hover:text-black text-xs font-medium transition-colors"
                 >
                   Learn more
                 </a>

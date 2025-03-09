@@ -10,6 +10,7 @@ import UpcomingEvents from '@/components/layout/UpcomingEvents';
 import VendorsSection from '@/components/layout/VendorsSection';
 import RecognitionSection from '@/components/layout/RecognitionSection';
 import SuccessStoriesSection from '@/components/layout/SuccessStoriesSection';
+import TestimonialsSection from '@/components/layout/TestimonialsSection';
 import { Features } from '@/components/layout/Features';
 import { CTA } from '@/components/layout/CTA';
 import { Footer } from '@/components/layout/Footer';
@@ -27,6 +28,7 @@ export default function Home() {
       <VendorsSection />
       <RecognitionSection /> 
       <SuccessStoriesSection />
+      <TestimonialsSection />
       <Features />
       <CTA />
       <Footer />
