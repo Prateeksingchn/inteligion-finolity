@@ -8,6 +8,8 @@ import Industries from "@/components/layout/Industries";
 import LatestNews from '@/components/layout/LatestNews';
 import UpcomingEvents from '@/components/layout/UpcomingEvents';
 import VendorsSection from '@/components/layout/VendorsSection';
+import RecognitionSection from '@/components/layout/RecognitionSection';
+import SuccessStoriesSection from '@/components/layout/SuccessStoriesSection';
 import { Features } from '@/components/layout/Features';
 import { CTA } from '@/components/layout/CTA';
 import { Footer } from '@/components/layout/Footer';
@@ -22,7 +24,9 @@ export default function Home() {
       <Industries />
       <LatestNews /> 
       <UpcomingEvents />
-      <VendorsSection /> {/* Add the Vendors Section here */}
+      <VendorsSection />
+      <RecognitionSection /> 
+      <SuccessStoriesSection />
       <Features />
       <CTA />
       <Footer />
