@@ -47,7 +47,7 @@ const brandsItems = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   // State for mobile dropdown menus
-  const [openMobileMenus, setOpenMobileMenus] = useState({
+  const [openMobileMenus, setOpenMobileMenus] = useState<Record<string, boolean>>({
     services: false,
     marketResearch: false,
     company: false,

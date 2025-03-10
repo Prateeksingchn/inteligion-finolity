@@ -15,7 +15,7 @@ export default function CompanyRecognize() {
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.2 } // Trigger when 20% of the section is visible
+      { threshold: 0.2 }
     );
 
     if (sectionRef.current) {
@@ -29,29 +29,20 @@ export default function CompanyRecognize() {
     };
   }, []);
 
-  // Animation styles for each logo with different directions
   const logoAnimations = [
-    // First row (with empty cell)
-    { transform: 'scale(0) rotate(-10deg)', position: 'top-right' },  // Empty cell
-    { transform: 'scale(0) rotate(5deg)', position: 'top' },          // Microsoft
-    { transform: 'scale(0) rotate(-5deg)', position: 'top-left' },    // Cisco
-    
-    // Second row
-    { transform: 'scale(0) rotate(10deg)', position: 'right' },       // Lenovo
-    { transform: 'scale(0) rotate(-8deg)', position: 'center' },      // Finolity
-    { transform: 'scale(0) rotate(8deg)', position: 'left' },         // Dell
-    
-    // Third row
-    { transform: 'scale(0) rotate(-12deg)', position: 'bottom-right' }, // Intel
-    { transform: 'scale(0) rotate(12deg)', position: 'bottom' },        // Ubiquiti
-    { transform: 'scale(0) rotate(-7deg)', position: 'bottom-left' }    // HP
+    { transform: 'scale(0) rotate(-10deg)', position: 'top-right' },
+    { transform: 'scale(0) rotate(5deg)', position: 'top' },
+    { transform: 'scale(0) rotate(-5deg)', position: 'top-left' },
+    { transform: 'scale(0) rotate(10deg)', position: 'right' },
+    { transform: 'scale(0) rotate(-8deg)', position: 'center' },
+    { transform: 'scale(0) rotate(8deg)', position: 'left' },
+    { transform: 'scale(0) rotate(-12deg)', position: 'bottom-right' },
+    { transform: 'scale(0) rotate(12deg)', position: 'bottom' },
+    { transform: 'scale(0) rotate(-7deg)', position: 'bottom-left' }
   ];
   
-  // Generate unique entrance animations for each logo
   const getEntranceStyle = (index: number, delay: number): React.CSSProperties => {
     const animation = logoAnimations[index];
-    
-    // Different entrance origins based on position
     let translateX = '0';
     let translateY = '0';
     
@@ -74,57 +65,42 @@ export default function CompanyRecognize() {
     <section ref={sectionRef} className="bg-white py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-12">
-          {/* Left side content with animation */}
-          <div 
-            className={`lg:w-1/2 flex flex-col items-start justify-center transition-all duration-1000 ${
-              isVisible 
-                ? 'opacity-100 translate-x-0' 
-                : 'opacity-0 -translate-x-16'
-            }`}
-          >
-            <div 
-              className="mb-2 text-gray-700 uppercase text-xs tracking-wider font-medium bg-gray-100 inline-block px-3 py-1 rounded-md"
+          <div className={`lg:w-1/2 flex flex-col items-start justify-center transition-all duration-1000 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'
+            }`}>
+            <div className="mb-2 text-gray-700 uppercase text-xs tracking-wider font-medium bg-gray-100 inline-block px-3 py-1 rounded-md"
               style={{ 
                 transitionDelay: '200ms',
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
                 transition: 'opacity 700ms, transform 700ms'
-              }}
-            >
+              }}>
               WHERE WE DO
             </div>
-            <h2 
-              className="text-4xl md:text-5xl font-bold text-navy-900 mb-6"
+            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-6"
               style={{ 
                 transitionDelay: '400ms',
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
                 transition: 'opacity 700ms, transform 700ms'
-              }}
-            >
+              }}>
               Recognized by the best
             </h2>
-            <p 
-              className="text-gray-700 max-w-lg text-xl"
+            <p className="text-gray-700 max-w-lg text-xl"
               style={{ 
                 transitionDelay: '600ms',
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
                 transition: 'opacity 700ms, transform 700ms'
-              }}
-            >
+              }}>
               The company needed to complete a complex migration on a tight deadline to avoid millions of 
               dollars in post-contract fees and fines.
             </p>
           </div>
           
-          {/* Right side partner logos with individual animation */}
           <div className="lg:w-1/2">
             <div className="grid grid-cols-3 gap-x-8 gap-y-12">
-              {/* Logo positions with animations */}
-              <div className="flex items-center justify-center">
-                {/* Empty cell at top-left */}
-              </div>
+              <div className="flex items-center justify-center"></div>
               
               <div className="flex items-center justify-center">
                 <div style={getEntranceStyle(1, 1)}>
@@ -150,7 +126,6 @@ export default function CompanyRecognize() {
                 </div>
               </div>
               
-              {/* Middle row */}
               <div className="flex items-center justify-center">
                 <div style={getEntranceStyle(3, 3)}>
                   <Image
@@ -187,7 +162,6 @@ export default function CompanyRecognize() {
                 </div>
               </div>
               
-              {/* Bottom row */}
               <div className="flex items-center justify-center">
                 <div style={getEntranceStyle(6, 6)}>
                   <Image
